@@ -1,24 +1,17 @@
-	.file	"mstore.c"
-	.intel_syntax noprefix
+	.file	"3_4.c"
 	.text
-	.globl	multstore
-	.type	multstore, @function
-multstore:
+	.globl	try_method
+	.type	try_method, @function
+try_method:
 .LFB0:
 	.cfi_startproc
 	endbr64
-	push	rbx
-	.cfi_def_cfa_offset 16
-	.cfi_offset 3, -16
-	mov	rbx, rdx
-	call	mult2@PLT
-	mov	QWORD PTR [rbx], rax
-	pop	rbx
-	.cfi_def_cfa_offset 8
+	movsbw	(%rdi), %ax
+	movw	%ax, (%rsi)
 	ret
 	.cfi_endproc
 .LFE0:
-	.size	multstore, .-multstore
+	.size	try_method, .-try_method
 	.ident	"GCC: (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
